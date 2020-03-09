@@ -58,13 +58,14 @@ function App() {
     <div className="App">
       <DatePicker
         selected={startDate}
-        onChange={(date, ev) => handleChange(ev, date)}
-        minDate={currentDate}
-        maxDate={oneYearFromNow}
-        onCalendarClose={handleCalendarClose}
-        onCalendarOpen={handleCalendarOpen}
-        monthHeaderClickHandler={toggleDateFormat}
+        onChange={(date, ev) => handleChange(ev, date)} // callback fn called after date change
+        minDate={currentDate} // minimum allowed date
+        maxDate={oneYearFromNow} // max allowed date
+        onCalendarClose={handleCalendarClose} // callback on close of calendar
+        onCalendarOpen={handleCalendarOpen} // callback on open of calendar
+        monthHeaderClickHandler={toggleDateFormat} // function to call on click of date view header
         excludeDates={[
+          // dates to exclude ( in date format )
           addDays(new Date(), 2),
           addDays(new Date(), 4),
           addDays(new Date(), 6),
@@ -73,6 +74,7 @@ function App() {
           addDays(new Date(), 12)
         ]}
         highlightDates={[
+          // dates to highlight ( in date format )
           addDays(new Date(), 1),
           addDays(new Date(), 3),
           addDays(new Date(), 5),
@@ -80,12 +82,12 @@ function App() {
           addDays(new Date(), 9),
           addDays(new Date(), 11)
         ]}
-        dateFormat={"yyyy/MM/dd"}
-        showMonthYearPicker={dateFormatObj.showMonthYearPicker}
-        shouldCloseOnSelect={dateFormatObj.shouldCloseOnSelect}
-        monthsShown={dateFormatObj.monthsShown}
-        showPreviousButton={dateFormatObj.showPreviousButton}
-        showNextButton={dateFormatObj.showNextButton}
+        dateFormat={"yyyy/MM/dd"} // format of date
+        showMonthYearPicker={dateFormatObj.showMonthYearPicker} // needed to show month view
+        shouldCloseOnSelect={dateFormatObj.shouldCloseOnSelect} // optional
+        monthsShown={dateFormatObj.monthsShown} // how many sections to show (2 in case of year view and in case of month view)
+        showPreviousButton={dateFormatObj.showPreviousButton} // show previous navigation button
+        showNextButton={dateFormatObj.showNextButton} // show next navigation button
       />
     </div>
   );
