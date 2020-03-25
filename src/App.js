@@ -14,6 +14,15 @@ function App() {
 
   const [startDate, setStartDate] = useState(new Date());
 
+  //const [open, setOpenDate] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDatePicker = () => {
+    debugger;
+    //const isDateOpen = !open;
+    setIsOpen(!isOpen);
+  };
+
   const [dateFormatObj, setDateFormat] = useState({
     isMonth: false,
     dateFormat: "yyyy/MM/dd",
@@ -30,7 +39,7 @@ function App() {
         showMonthYearPicker: false,
         showPreviousButton: true,
         showNextButton: true,
-        shouldCloseOnSelect: true
+        shouldCloseOnSelect: false
       });
     } else {
       setDateFormat({
@@ -57,6 +66,7 @@ function App() {
   return (
     <div className="App">
       <DatePicker
+        open={isOpen} // optional to open close datepicker programmatically
         selected={startDate}
         onChange={(date, ev) => handleChange(ev, date)} // callback fn called after date change
         minDate={currentDate} // minimum allowed date
@@ -89,6 +99,7 @@ function App() {
         showPreviousButton={dateFormatObj.showPreviousButton} // show previous navigation button
         showNextButton={dateFormatObj.showNextButton} // show next navigation button
       />
+      <button onClick={() => toggleDatePicker()}>toggle datepicker</button>
     </div>
   );
 }
